@@ -1,0 +1,39 @@
+
+<html>
+<head>
+  <title>NIC Year of Birth</title>
+</head>
+<body>
+  <h1>Student NIC Year of Birth</h1>
+
+  <label for="nic-input">Enter NIC Number:</label>
+  <input type="text" id="nic-input">
+  <button onclick="extractYearOfBirth()">Extract Year of Birth</button>
+
+  <p id="year-of-birth"></p>
+
+  <script>
+    function extractYearOfBirth() {
+      var nicInput = document.getElementById("nic-input").value;
+
+     
+      if (nicInput.length === 12 && nicInput.substr(2, 3) === "19" || nicInput.substr(2, 3) === "20") {
+        var yearOfBirth = nicInput.substr(0, 2);
+        var currentYear = new Date().getFullYear();
+
+        if (nicInput.substr(2, 3) === "20") {
+          yearOfBirth = "20" + yearOfBirth;
+        } else {
+          yearOfBirth = "19" + yearOfBirth;
+        }
+
+        
+        document.getElementById("year-of-birth").innerHTML = "Year of Birth: " + yearOfBirth;
+      } else {
+        
+        document.getElementById("year-of-birth").innerHTML = "Invalid NIC Number";
+      }
+    }
+  </script>
+</body>
+</html>
